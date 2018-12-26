@@ -20,22 +20,22 @@ export class AppController {
         console.log(query, 'query')
         switch (query.type) {
             case 'Day Off':
-                this.buildDayOffMessage();
+                this.buildDayOffMessage(query);
                 break;
             case 'Remote Work':
-                this.buildRemoteWorkMessage();
+                this.buildRemoteWorkMessage(query);
                 break;
             case 'Sick Leave':
-                this.buildSickLeaveMessage();
+                this.buildSickLeaveMessage(query);
                 break;
             case 'Vacation':
-                this.buildVacationMessage();
+                this.buildVacationMessage(query);
                 break;
         }
 
     }
 
-    buildDayOffMessage() {
+    buildDayOffMessage(query) {
         console.log('im here1')
         const url = 'https://hooks.slack.com/services/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?authtoken=xoxb-459079151415-459237191175-RiYCxKYkMniFzhR9g4goBxE0';
         const webhook = new IncomingWebhook(url);
@@ -61,7 +61,7 @@ export class AppController {
         });
     }
 
-    buildSickLeaveMessage() {
+    buildSickLeaveMessage(query) {
         console.log('im here2')
         const url = 'https://hooks.slack.com/services/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?authtoken=xoxb-459079151415-459237191175-RiYCxKYkMniFzhR9g4goBxE0';
         const webhook = new IncomingWebhook(url);
@@ -87,11 +87,11 @@ export class AppController {
         });
     }
 
-    buildRemoteWorkMessage() {
+    buildRemoteWorkMessage(query) {
 
     }
 
-    buildVacationMessage() {
+    buildVacationMessage(query) {
 
     }
 
