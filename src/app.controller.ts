@@ -17,12 +17,11 @@ export class AppController {
     }
 
     checkLeaveType(query) {
-        console.log(query, 'query')
         switch (query.type) {
             case 'Day Off':
                 this.buildDayOffMessage(query);
                 break;
-            case 'Remote Work':
+            case 'Remote work':
                 this.buildRemoteWorkMessage(query);
                 break;
             case 'Sick Leave':
@@ -36,16 +35,16 @@ export class AppController {
     }
 
     buildDayOffMessage(query) {
-        console.log('im here1')
         const url = 'https://hooks.slack.com/services/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?authtoken=xoxb-459079151415-459237191175-RiYCxKYkMniFzhR9g4goBxE0';
         const webhook = new IncomingWebhook(url);
         let reasonMsg = '';
-        let dayOffMsg = `${query.firstName} ${query.lastName} took dayoff at ${query.from}. ${reasonMsg}`;
 
         if (query.reason) {
             console.log('reason for day off')
             reasonMsg = ` Reason: ${query.reason} `
         }
+
+        let dayOffMsg = `${query.firstName} ${query.lastName} took dayoff at ${query.from}. ${reasonMsg}`;
 
         if (query.from && query.to && (query.from !== query.to)) {
             console.log('day off from to')
@@ -63,16 +62,16 @@ export class AppController {
     }
 
     buildSickLeaveMessage(query) {
-        console.log('im here2')
         const url = 'https://hooks.slack.com/services/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?authtoken=xoxb-459079151415-459237191175-RiYCxKYkMniFzhR9g4goBxE0';
         const webhook = new IncomingWebhook(url);
         let reasonMsg = '';
-        let sickLeaveMsg = `${query.firstName} ${query.lastName} took sick leave at ${query.from}. ${reasonMsg}`;
 
         if (query.reason) {
             console.log('reason for sick')
             reasonMsg = ` Reason: ${query.reason} `
         }
+
+        let sickLeaveMsg = `${query.firstName} ${query.lastName} took sick leave at ${query.from}. ${reasonMsg}`;
 
         if (query.from && query.to && (query.from !== query.to)) {
             console.log('sick from to')
@@ -90,16 +89,17 @@ export class AppController {
     }
 
     buildRemoteWorkMessage(query) {
-        console.log('im here3')
         const url = 'https://hooks.slack.com/services/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?authtoken=xoxb-459079151415-459237191175-RiYCxKYkMniFzhR9g4goBxE0';
         const webhook = new IncomingWebhook(url);
         let reasonMsg = '';
-        let sickLeaveMsg = `${query.firstName} ${query.lastName} works remotely at ${query.from}. ${reasonMsg}`;
 
         if (query.reason) {
             console.log('reason for remote')
             reasonMsg = ` Reason: ${query.reason} `
         }
+
+        let sickLeaveMsg = `${query.firstName} ${query.lastName} works remotely at ${query.from}. ${reasonMsg}`;
+
 
         if (query.from && query.to && (query.from !== query.to)) {
             console.log('remote from to')
@@ -116,7 +116,6 @@ export class AppController {
     }
 
     buildVacationMessage(query) {
-        console.log('im here4')
         const url = 'https://hooks.slack.com/services/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?authtoken=xoxb-459079151415-459237191175-RiYCxKYkMniFzhR9g4goBxE0';
         const webhook = new IncomingWebhook(url);
         let vacationMsg = `${query.firstName} ${query.lastName} took vacation day at ${query.from}.`;
