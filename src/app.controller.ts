@@ -40,7 +40,6 @@ export class AppController {
         let reasonMsg = '';
 
         if (query.reason) {
-            console.log('reason for day off')
             reasonMsg = ` Reason: ${query.reason} `
         }
 
@@ -67,16 +66,21 @@ export class AppController {
         let reasonMsg = '';
 
         if (query.reason) {
-            console.log('reason for sick')
             reasonMsg = ` Reason: ${query.reason} `
         }
 
         let sickLeaveMsg = `${query.firstName} ${query.lastName} took sick leave at ${query.from}. ${reasonMsg}`;
 
+        console.log('reasonMsg', reasonMsg)
+
+
         if (query.from && query.to && (query.from !== query.to)) {
             console.log('sick from to')
             sickLeaveMsg = `${query.firstName} ${query.lastName} took sick leaves from ${query.from} to ${query.to}. ${reasonMsg}`;
         }
+
+        console.log('sickLeaveMsg', sickLeaveMsg)
+
 
         webhook.send(sickLeaveMsg, function (err, res) {
 
@@ -89,24 +93,24 @@ export class AppController {
     }
 
     buildRemoteWorkMessage(query) {
+        console.log('IM IN REMOTE WORK FUNC')
         const url = 'https://hooks.slack.com/services/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?authtoken=xoxb-459079151415-459237191175-RiYCxKYkMniFzhR9g4goBxE0';
         const webhook = new IncomingWebhook(url);
         let reasonMsg = '';
 
         if (query.reason) {
-            console.log('reason for remote')
             reasonMsg = ` Reason: ${query.reason} `
         }
 
-        let sickLeaveMsg = `${query.firstName} ${query.lastName} works remotely at ${query.from}. ${reasonMsg}`;
+        let remoteWorkMsg = `${query.firstName} ${query.lastName} works remotely at ${query.from}. ${reasonMsg}`;
 
 
         if (query.from && query.to && (query.from !== query.to)) {
             console.log('remote from to')
-            sickLeaveMsg = `${query.firstName} ${query.lastName} works remotely from ${query.from} to ${query.to}. ${reasonMsg}`;
+            remoteWorkMsg = `${query.firstName} ${query.lastName} works remotely from ${query.from} to ${query.to}. ${reasonMsg}`;
         }
 
-        webhook.send(sickLeaveMsg, function (err, res) {
+        webhook.send(remoteWorkMsg, function (err, res) {
             if (err) {
                 console.log('Error sending remote message:', err);
             } else {
@@ -121,7 +125,6 @@ export class AppController {
         let vacationMsg = `${query.firstName} ${query.lastName} took vacation day at ${query.from}.`;
 
         if (query.from && query.to && (query.from !== query.to)) {
-            console.log('vac from to')
             vacationMsg = `${query.firstName} ${query.lastName} took vacation from ${query.from} to ${query.to}.`;
         }
 
