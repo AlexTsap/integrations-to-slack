@@ -8,7 +8,7 @@ You have to setup url to Slack room in *slack-url.ts*, in format like this:
 slackUrl = 'https://hooks.slack.com/services/YYYYYYYY/XXXXXXX/ZZZZZZZZZ?authtoken=slack-auth-token'
 ``` 
 
-Also, **deploy.sh** and **Dockerfile** has to be created
+Also, you need to create **deploy.sh** and **Dockerfile** files, with deploy configuration to the remote services.
 
 ## Installation
 
